@@ -34,10 +34,7 @@ const EmployeeComponent = () => {
   const handleInputChangeDuration = (e) => {
     setDuration(e.target.value);
   };
-  //const handleInputChangeStatus = (e) => {
-   // setStatus(e.target.value);
- // };
-///  
+
   function validateForm(){return true ; }
 
   function saveOrUpdateEmployee(e){
@@ -62,22 +59,7 @@ const EmployeeComponent = () => {
     
   }
   
-{ /* function validateForm(){
-    let valid = true ; 
-    const errorsCopy={...errors} ; 
-    if (fullName.trim() == false){
-      errorsCopy.fullName = "full name is required" ;
-      valid=false ; 
-    }else{errorsCopy.fullName='' ; }
 
-    setErrors(errorsCopy) ; 
-    return valid ; 
-  }
-*/}
-  
-  //const [firstNameAlready, setFirstNameAlready] = useState(firstName) ; 
-  //const [lastNameAlready, setlastNameAlready] = useState(lastName) ;
-  //const [emailAlready, setEmailAlready] = useState(email) ;
 
   
 
@@ -98,6 +80,20 @@ const EmployeeComponent = () => {
       }).catch( error => {console.error(error); })
     }
     } , [id]); 
+
+
+    const getColor = () => {
+      switch (status) {
+        case "confirmé":
+          return "green";
+        case "en cours de vérification":
+          return "red";
+        case "presque confirmé":
+          return "blue";
+        default:
+          return "black"; // couleur par défaut
+      }
+    };
     
 
 
@@ -128,6 +124,8 @@ const EmployeeComponent = () => {
             <select className="form-select" aria-label="Default select example" value={level} onChange={handleInputChangeLevel}  >
               <option selected>Level</option>
               <option value="1 Bac Sc. EX">1 Bac Sc. EX</option>
+              <option value="5ème ">5ème </option>
+
               <option value="1 Bac Sc. MATHS">1 Bac Sc. MATHS</option>
               <option value="2 Bac Sc. MATHS">2 Bac Sc. MATHS</option>
               <option value="2 Bac Sc. PC">2 Bac Sc. PC</option>
@@ -152,11 +150,11 @@ const EmployeeComponent = () => {
           <div className="form-group mb-2">
             <label className="block text-sm font-medium text-gray-700 mb-2 form-label">Statut d'étudiant :</label>
            
-            <select className="form-select" aria-label="Default select example" value={status} onChange={handleInputChangeStatus} >
+            <select className="form-select" aria-label="Default select example" value={status} onChange={handleInputChangeStatus} style={{ color: getColor() }} >
               <option selected>Statut</option>
-              <option value="confirmé">confirmé</option>
-              <option value="presque confirmé">presque confirmé</option>
-              <option value="en cours de vérification">en cours de vérification</option>
+              <option value="confirmé" >confirmé</option>
+              <option value="presque confirmé" >presque confirmé</option>
+              <option value="en cours de vérification" >en cours de vérification</option>
             </select>
     
           </div>
@@ -182,7 +180,6 @@ const EmployeeComponent = () => {
     <button
     onClick={saveOrUpdateEmployee}
       className="btn btn-primary mt-2 col-md-2 offset-md-3"
-      
     >Save Student</button>
   </div>
   

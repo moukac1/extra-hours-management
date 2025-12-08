@@ -1,0 +1,34 @@
+package net.back.backend_proj.dto;
+
+public class EmployeeDto {
+    private Long id ;
+    private String fullName;
+    private String level;
+    private String note;
+    private String status ;
+    private String duration;
+
+    public EmployeeDto(Long id, String fullName, String level,String note, String status , String duration) {
+        this.id = id;
+        this.fullName = fullName;
+        this.level = level;
+        this.note=note ;
+        this.status=status;
+        this.duration=duration;
+
+    }
+
+   public Long getId() {return this.id;}
+    public void setId(Long id) {this.id = id;}
+    public String getFullName() {return this.fullName;}
+    public void setFullName(String fullName) {this.fullName = fullName;}
+
+    public String getLevel() {return this.level;}
+    public void setLevel(String level) {this.level = level;}
+    public String getNote() {return this.note;}
+    public void setNote(String note) {this.note = note;}
+    public String getStatus() {return this.status;}
+    public void setStatus(String status) {this.status = status;}
+    public String getDuration() {return this.duration;}
+    public void setDuration(String duration) {this.duration = duration;}
+}

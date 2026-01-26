@@ -13,7 +13,7 @@ const Update_Schedule_By_Id  ='http://localhost:8080/api/employees/update-schedu
 const Get_Schedule_By_Id =    'http://localhost:8080/api/employees/schedule';
 const Delete_Schedule_By_Id =  'http://localhost:8080/api/employees/delete-schedule'
 
-const Get_All_Earnings = 'http://localhost:8080/api/employees/get-earnings' ; 
+const Get_All_Earnings = 'http://localhost:8080/api/employees/AllEarnings' ; 
 const Create_Earning = 'http://localhost:8080/api/employees/add-earning' ; 
 const Delete_Earning_By_Id ='http://localhost:8080/api/employees/delete-earning' ; 
  

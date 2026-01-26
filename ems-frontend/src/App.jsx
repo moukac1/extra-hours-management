@@ -18,16 +18,16 @@ function App() {
       <HeaderComponent/>
       <Routes>
         <Route path='/' element={<ListEmployeeComponent/>}>  </Route>
-        <Route path='/employees' element={<ListEmployeeComponent/>}  ></Route>
-        <Route path='/add-employee' element={<EmployeeComponent/>} ></Route>
-        <Route path='/update-employee/:id' element={<EmployeeComponent/>} ></Route>
+        <Route path='/students' element={<ListEmployeeComponent/>}  ></Route>
+        <Route path='/add-student' element={<EmployeeComponent/>} ></Route>
+        <Route path='/update-student/:id' element={<EmployeeComponent/>} ></Route>
         <Route path='/see-note/:id' element={<Note/>} ></Route>
-        <Route path='/delete-employee/:id' element={<ListEmployeeComponent/>} ></Route>
+        <Route path='/delete-student/:id' element={<ListEmployeeComponent/>} ></Route>
         <Route path='/add-earning' element= {<EarningComponent/>}></Route>
         <Route path='/update-schedule/:id' element={<UpdateSchedule/>} ></Route> 
       </Routes>
       
-      <FooterComponent/>
+     
     </BrowserRouter>
     </>
   )

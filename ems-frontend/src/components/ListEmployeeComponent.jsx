@@ -20,7 +20,7 @@ function ListEmployeeComponent() {
 
           //update student
   function updateEmployee(id){
-    navigator(`/update-employee/${id}`)
+    navigator(`/update-student/${id}`)
   }
 
           //update Note
@@ -33,13 +33,13 @@ function ListEmployeeComponent() {
        getAllEmployees();
       })
       .catch((error)=>console.error(error))    
-     navigator('/employees') ;
+     navigator('/students') ;
   } 
   //Add new employee
   const navigator = useNavigate(); 
   function addNewEmployee(){
   
-    navigator("/add-employee") ; 
+    navigator("/add-student") ; 
    
   }
   function addEarning(){

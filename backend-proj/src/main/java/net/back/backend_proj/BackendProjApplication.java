@@ -1,6 +1,5 @@
 package net.back.backend_proj;
 
-import net.back.backend_proj.dto.EmployeeDto;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

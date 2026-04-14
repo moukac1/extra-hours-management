@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # Service MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: mysqlData1
+    environment:
+      MYSQL_ROOT_PASSWORD: "00000"
+      MYSQL_DATABASE: ems
+      MYSQL_USER: mouad
+      MYSQL_PASSWORD: "00000"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql  # Import automatique
+    networks:
+      - myy-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p00000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Service Backend
+  backend:
+    build:
+      context: ./backend-proj  # Ajuste selon ton dossier backend
+      dockerfile: Dockerfile
+    image: backend-image
+    container_name: my-backend
+    ports:
+      - "8080:8080"
+    networks:
+      - myy-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      # Ajoute ici les variables d'environnement pour la connexion DB
+      DB_HOST: mysqlData1
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: "00000"
+      DB_NAME: ems
+
+  # Service Frontend
+  frontend:
+    image: node:22-alpine
+    container_name: frontend8
+    working_dir: /usr/src/app
+    volumes:
+      - ./ems-frontend:/usr/src/app
+    ports:
+      - "3000:3000"
+    networks:
+      - myy-network
+    depends_on:
+      - backend
+    command: npm run dev
+    stdin_open: true  # Pour le mode interactif
+    tty: true
+
+networks:
+  myy-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local
